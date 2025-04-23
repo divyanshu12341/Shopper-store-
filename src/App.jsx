@@ -5,11 +5,11 @@ import ShopCategory from './Pages/ShopCategory';
 import Shop from './Pages/Shop';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
-import LoginSignup from './Pages/LoginSignup';
 import Footer from './Components/Footer/Footer';
 import men_banner from './Components/assets/banner_mens.png';
 import women_banner from './Components/assets/banner_women.png';
 import kids_banner from './Components/assets/banner_kids.png';
+import LoginSignUp from './Pages/LoginSignUp';
 
 function App() {
   return(
