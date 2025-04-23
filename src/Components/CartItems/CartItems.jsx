@@ -1,11 +1,10 @@
-
-
-
 import React, { useContext } from 'react';
 import './cartItems.css';
-import { ShopContext } from '../../Context/shopContext';
+// Corrected casing for ShopContext import
+import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../assets/cart_cross_icon.png';
 
+// ... rest of the component code
 const CartItems = () => {
     // Destructure all needed values from context
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
