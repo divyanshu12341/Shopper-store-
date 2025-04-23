@@ -1,22 +1,19 @@
-/* d:\Coding\React practice\ecommerce clone\frontend\src\Components\ProductDisplay\ProductDisplay.css */
 
 .productdisplay {
     display: flex;
-    /* Use padding for inner spacing, margin auto for centering */
-    /* Adjust max-width as needed for your design */
+    
     max-width: 1280px;
-    width: 90%; /* Responsive width */
-    margin: 3rem auto; /* Vertical margin (adjust as needed), auto horizontal margin */
-    gap: 3rem; /* Gap between left and right columns */
+    width: 90%; 
+    margin: 3rem auto;
+    gap: 3rem; 
     box-sizing: border-box;
 }
 
 .productdisplay-left {
     display: flex;
-    gap: 1rem; /* Consistent gap */
-    /* Allow left side to shrink but not grow excessively */
+    gap: 1rem; 
     flex: 1 1 50%;
-    min-width: 0; /* Prevent overflow issues in flex */
+    min-width: 0; 
 }
 
 .productdisplay-img-list {
@@ -26,7 +23,7 @@
 }
 
 .productdisplay-img-list img {
-    /* Make thumbnail height responsive, max-height prevents them getting too large */
+  
     height: auto;
     max-height: 10rem; /* Adjust max-height as needed */
     width: auto; /* Maintain aspect ratio */
