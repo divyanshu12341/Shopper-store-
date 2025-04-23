@@ -1,0 +1,296 @@
+/* d:\Coding\React practice\ecommerce clone\frontend\src\Components\CartItems\cartItems.css */
+
+.cartitems {
+    margin: 50px 100px; /* Adjust margins as needed */
+}
+
+.cartitems hr {
+    height: 2px;
+    background: #e2e2e2;
+    border: 0;
+    margin: 10px 0; /* Add some vertical space around the lines */
+}
+
+/* --- Item List Header --- */
+.cartitems-format-main {
+    display: grid;
+    /* Define 6 columns: Image, Title, Price, Quantity, Total, Remove */
+    /* Adjust fr units based on desired column widths */
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 0.5fr;
+    align-items: center; /* Vertically center content in each cell */
+    gap: 50px; /* Space between columns */
+    padding: 15px 0px;
+    color: #454545;
+    font-size: 16px; /* Adjust font size */
+    font-weight: 600; /* Make header text bold */
+}
+
+/* --- Individual Item Row --- */
+.cartitems-format {
+    font-size: 15px; /* Slightly smaller font for items */
+    font-weight: 500; /* Normal font weight for items */
+    /* Inherits grid-template-columns and gap from cartitems-format-main */
+}
+
+.carticon-product-icon {
+    height: 60px; /* Adjust image size */
+    width: auto; /* Maintain aspect ratio */
+    /* You might want to add object-fit: contain; if images have different aspect ratios */
+}
+
+.cartitems-remove-icon {
+    width: 15px; /* Size of the remove icon */
+    margin: 0 auto; /* Center the icon horizontally within its grid cell */
+    cursor: pointer; /* Indicate it's clickable */
+    display: block; /* Needed for margin auto to work effectively */
+}
+
+.cartitems-quantity {
+    width: 50px; /* Width of the quantity button */
+    height: 40px; /* Height of the quantity button */
+    border: 1px solid #ccc; /* Subtle border */
+    background: #fff;
+    display: flex; /* Center the number inside */
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin: 0 auto; /* Center the button horizontally */
+}
+
+/* --- Cart Totals & Promo Section --- */
+.cartitems-down {
+    display: flex;
+    margin: 80px 0px; /* More space above this section */
+    gap: 50px; /* Space between total and promo code sections */
+}
+
+.cartitems-total {
+    flex: 1; /* Take up available space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between elements inside the total section */
+}
+
+.cartitems-total h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.cartitems-total-item {
+    display: flex;
+    justify-content: space-between; /* Push text to opposite ends */
+    padding: 10px 0px;
+    font-size: 15px;
+}
+
+.cartitems-total-item h3 {
+    font-size: 16px; /* Make total slightly larger/bolder */
+    font-weight: 600;
+}
+
+.cartitems-total button {
+    width: 220px; /* Adjust button width */
+    height: 50px;
+    outline: none;
+    border: none;
+    background: #ff5a5a; /* Example button color */
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px; /* Space above the button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.cartitems-total button:hover {
+    background: #e04a4a; /* Darker shade on hover */
+}
+
+.cartitems-promocode {
+    flex: 1; /* Take up available space */
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cartitems-promocode p {
+    color: #555;
+    margin-bottom: 10px; /* Space below the paragraph */
+}
+
+.cartitems-promobox {
+    width: 100%; /* Make the promo box take full width of its container */
+    max-width: 450px; /* Optional: Limit max width */
+    margin-top: 15px;
+    padding-left: 15px; /* Indent the box slightly */
+    height: 50px;
+    background: #eaeaea;
+    display: flex; /* Align input and button */
+    align-items: center; /* Vertically center */
+    border-radius: 4px; /* Slightly rounded corners */
+}
+
+.cartitems-promobox input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    flex-grow: 1; /* Allow input to take available space */
+    height: 100%;
+    padding-right: 10px; /* Space before the button */
+}
+
+.cartitems-promobox button {
+    width: 120px; /* Width of the submit button */
+    height: 50px;
+    font-size: 15px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-top-right-radius: 4px; /* Match container radius */
+    border-bottom-right-radius: 4px; /* Match container radius */
+    transition: background-color 0.3s ease;
+}
+
+.cartitems-promobox button:hover {
+    background: #333; /* Darker grey on hover */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media(max-width: 1024px) {
+    .cartitems {
+        margin: 50px 50px;
+    }
+    .cartitems-format-main, .cartitems-format {
+        grid-template-columns: 0.5fr 2.5fr 1fr 1fr 1fr 0.5fr; /* Adjust column widths */
+        gap: 20px; /* Reduce gap */
+        font-size: 14px;
+    }
+    .cartitems-format {
+        font-size: 13px;
+    }
+    .carticon-product-icon {
+        height: 50px;
+    }
+    .cartitems-quantity {
+        width: 40px;
+        height: 30px;
+    }
+    .cartitems-down {
+        margin: 60px 0px;
+        gap: 30px;
+    }
+    .cartitems-total {
+        gap: 15px;
+    }
+    .cartitems-total h1 {
+        font-size: 20px;
+    }
+    .cartitems-total button {
+        width: 180px;
+        height: 45px;
+        font-size: 14px;
+    }
+    .cartitems-promobox {
+        max-width: none; /* Allow full width */
+        width: auto; /* Let flexbox handle width */
+    }
+    .cartitems-promobox button {
+        width: 100px;
+    }
+}
+
+@media(max-width: 768px) {
+    .cartitems {
+        margin: 30px 20px;
+    }
+    .cartitems-format-main {
+        display: none; /* Hide the header row on small screens */
+    }
+    .cartitems-format {
+        /* Stack items vertically on small screens */
+        grid-template-columns: 1fr; /* Single column */
+        gap: 15px; /* Space between elements */
+        padding: 15px;
+        border: 1px solid #e2e2e2; /* Add border for separation */
+        margin-bottom: 15px;
+        text-align: center; /* Center text */
+    }
+    .carticon-product-icon {
+        height: 80px; /* Make image larger */
+        margin: 0 auto; /* Center image */
+    }
+    .cartitems-quantity {
+        margin: 10px auto; /* Adjust margin */
+    }
+    .cartitems-remove-icon {
+        margin: 10px auto; /* Adjust margin */
+    }
+    .cartitems hr {
+        display: none; /* Hide horizontal rules when stacked */
+    }
+    /* Add labels using pseudo-elements if header is hidden */
+    .cartitems-format p:nth-of-type(1)::before { content: "Title: "; font-weight: 600; }
+    .cartitems-format p:nth-of-type(2)::before { content: "Price: "; font-weight: 600; }
+    .cartitems-format .cartitems-quantity::before { content: "Qty: "; font-weight: 600; margin-right: 5px;}
+    .cartitems-format p:nth-of-type(3)::before { content: "Total: "; font-weight: 600; }
+
+    /* Stack total and promo sections */
+    .cartitems-down {
+        flex-direction: column;
+        gap: 40px; /* Increase gap when stacked */
+        margin: 50px 0;
+    }
+    .cartitems-total {
+        /* No flex: 1 needed when stacked */
+        order: 2; /* Show promo code section first if desired */
+    }
+    .cartitems-promocode {
+       /* No flex: 1 needed when stacked */
+       order: 1; /* Show promo code section first if desired */
+    }
+    .cartitems-total button {
+        width: 100%; /* Full width button */
+        max-width: 250px; /* Limit max width */
+        margin: 20px auto 0 auto; /* Center button */
+        display: block;
+    }
+    .cartitems-promobox {
+        width: 100%; /* Full width */
+        padding-left: 10px;
+    }
+    .cartitems-promobox button {
+        width: 90px;
+    }
+}
+
+@media(max-width: 500px) {
+    .cartitems {
+        margin: 20px 10px;
+    }
+     .cartitems-format {
+        padding: 10px;
+        gap: 10px;
+     }
+     .cartitems-total h1 {
+        font-size: 18px;
+     }
+     .cartitems-total-item, .cartitems-total-item h3 {
+        font-size: 14px;
+     }
+     .cartitems-promocode p {
+        font-size: 14px;
+     }
+     .cartitems-promobox input, .cartitems-promobox button {
+        font-size: 13px;
+     }
+     .cartitems-promobox button {
+        width: 80px;
+     }
+     .cartitems-total button {
+        height: 40px;
+        font-size: 13px;
+     }
+}

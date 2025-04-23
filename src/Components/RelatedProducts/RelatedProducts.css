@@ -1,0 +1,82 @@
+/* src/Components/RelatedProducts/RelatedProducts.css */
+
+.relatedproducts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Space between elements */
+    /* Responsive margin */
+    margin: 4rem auto 6rem auto; /* Adjust vertical margins as needed */
+    width: 90%;
+    max-width: 1280px; /* Limit max width */
+    box-sizing: border-box;
+}
+
+.relatedproducts h1 {
+    color: #171717;
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive font size */
+    font-weight: 600;
+    margin: 0; /* Remove default margin */
+}
+
+.relatedproducts hr {
+    width: 200px;
+    max-width: 80%; /* Ensure it doesn't get too wide */
+    height: 6px;
+    border-radius: 10px;
+    background: #252525;
+    border: none;
+    margin: 0.5rem 0 2rem 0; /* Adjust spacing around hr */
+}
+
+.relatedproducts-item {
+    display: grid;
+    /* Create responsive columns: min 200px wide, max 1fr (equal space) */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; /* Gap between grid items */
+    width: 100%; /* Take full width of parent */
+    justify-content: center; /* Center items if they don't fill the row */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 1024px) {
+    .relatedproducts-item {
+        gap: 1.5rem;
+        /* Adjust minmax if needed for tablets */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .relatedproducts hr {
+        width: 160px;
+        height: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .relatedproducts {
+        margin: 3rem auto 4rem auto; /* Reduce vertical margins */
+        gap: 0.8rem;
+    }
+    .relatedproducts hr {
+        width: 120px;
+        height: 3px;
+        margin-bottom: 1.5rem;
+    }
+    .relatedproducts-item {
+        gap: 1rem;
+        /* Adjust minmax for mobile */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .relatedproducts-item {
+        /* Switch to 2 columns explicitly on very small screens */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+     .relatedproducts hr {
+        width: 100px;
+    }
+}
+

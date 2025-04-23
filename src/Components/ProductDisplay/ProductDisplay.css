@@ -1,0 +1,301 @@
+/* d:\Coding\React practice\ecommerce clone\frontend\src\Components\ProductDisplay\ProductDisplay.css */
+
+.productdisplay {
+    display: flex;
+    /* Use padding for inner spacing, margin auto for centering */
+    /* Adjust max-width as needed for your design */
+    max-width: 1280px;
+    width: 90%; /* Responsive width */
+    margin: 3rem auto; /* Vertical margin (adjust as needed), auto horizontal margin */
+    gap: 3rem; /* Gap between left and right columns */
+    box-sizing: border-box;
+}
+
+.productdisplay-left {
+    display: flex;
+    gap: 1rem; /* Consistent gap */
+    /* Allow left side to shrink but not grow excessively */
+    flex: 1 1 50%;
+    min-width: 0; /* Prevent overflow issues in flex */
+}
+
+.productdisplay-img-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Consistent gap */
+}
+
+.productdisplay-img-list img {
+    /* Make thumbnail height responsive, max-height prevents them getting too large */
+    height: auto;
+    max-height: 10rem; /* Adjust max-height as needed */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 6rem; /* Prevent excessive width */
+    object-fit: contain; /* Ensure image fits without distortion */
+    cursor: pointer;
+    border: 1px solid #eee; /* Subtle border */
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+}
+
+.productdisplay-img-list img:hover {
+    border-color: #ccc; /* Highlight on hover */
+}
+
+/* Consider adding an 'active' class for the selected thumbnail */
+.productdisplay-img-list img.active {
+    border-color: #ff4141;
+    border-width: 2px;
+}
+
+
+.productdisplay-main-img-container {
+    /* Allow this container to grow and take space */
+    flex-grow: 1;
+    min-width: 0; /* Prevent overflow issues in flex */
+}
+
+.productdisplay-main-img {
+    /* Make main image responsive */
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 700px; /* Optional: Limit max height */
+    object-fit: contain; /* Or 'cover' depending on desired behavior */
+    display: block; /* Remove extra space below image */
+    border-radius: 4px; /* Optional rounding */
+}
+
+.productdisplay-right {
+    /* Allow right side to shrink but not grow excessively */
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Prevent overflow issues in flex */
+    /* Removed fixed margin */
+    /* margin: 0px 70px; */
+}
+
+.productdisplay-right h1 {
+    color: #3d3d3d;
+    /* Responsive font size */
+    font-size: clamp(1.5rem, 3vw, 2.5rem); /* min, preferred, max */
+    font-weight: 600; /* Slightly less bold */
+    margin: 0 0 0.5rem 0; /* Adjust margin */
+    line-height: 1.3; /* Improve readability */
+}
+
+.productdisplay-right-stars {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Increased spacing below stars */
+    gap: 0.3rem; /* Reduced gap */
+    color: #1c1c1c;
+    font-size: 1rem;
+}
+
+.productdisplay-right-stars img {
+    width: 1rem; /* Adjust star icon size */
+    height: 1rem;
+}
+
+.productdisplay-right-prices {
+    display: flex;
+    align-items: baseline; /* Align prices nicely */
+    margin-bottom: 1.5rem; /* Spacing below prices */
+    gap: 1.5rem; /* Consistent gap */
+    font-size: 1.5rem; /* Base font size */
+    font-weight: 600; /* Slightly less bold */
+}
+
+.productdisplay-right-price-old {
+    color: #818181;
+    text-decoration: line-through;
+    font-size: 1.1rem; /* Make old price smaller */
+    font-weight: 400;
+}
+
+.productdisplay-right-price-new {
+    color: #ff4141;
+    font-size: 1.75rem; /* Make new price larger */
+    font-weight: 700;
+}
+
+.productdisplay-right-description {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.productdisplay-right-size h1 {
+    margin-top: 1.5rem; /* Adjusted spacing */
+    color: #656565;
+    font-size: 1.25rem; /* Adjusted size */
+    font-weight: 600;
+    margin-bottom: 1rem; /* Space below heading */
+}
+
+.productdisplay-right-sizes {
+    display: flex;
+    flex-wrap: wrap; /* Allow sizes to wrap */
+    margin-bottom: 2rem; /* Spacing below sizes */
+    gap: 0.75rem; /* Consistent gap */
+}
+
+.productdisplay-right-sizes div {
+    padding: 0.75rem 1.25rem; /* Adjusted padding */
+    background: #fbfbfb;
+    border: 1px solid #ebebeb;
+    border-radius: 4px; /* Slightly more rounded */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.productdisplay-right-sizes div:hover {
+    background-color: #f0f0f0;
+    border-color: #ddd;
+}
+
+/* Add a class for the selected size */
+.productdisplay-right-sizes div.selected {
+    background-color: #ff4141;
+    color: white;
+    border-color: #ff4141;
+}
+
+/* --- Add to Cart Button --- */
+.productdisplay-right button {
+    padding: 1rem 1.5rem;
+    width: 100%; /* Make button full width */
+    max-width: 300px; /* Optional: Limit max width */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: #ff4141;
+    margin-bottom: 2rem; /* Spacing below button */
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+    align-self: flex-start; /* Align button to the start */
+}
+
+.productdisplay-right button:hover {
+    background: #e03030; /* Darken on hover */
+}
+
+.productdisplay-right button:active {
+    background: #c02020; /* Darken further on click */
+}
+
+/* --- Category/Tags --- */
+.productdisplay-right-category {
+    margin-top: 0.5rem; /* Spacing above category */
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.productdisplay-right-category span {
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- Media Query for Responsiveness --- */
+@media (max-width: 1024px) {
+    .productdisplay {
+        gap: 2rem;
+        width: 95%; /* Slightly wider on medium screens */
+        margin: 2rem auto;
+    }
+    .productdisplay-left {
+        flex: 1 1 45%; /* Adjust flex basis */
+    }
+     .productdisplay-right {
+        flex: 1 1 55%; /* Adjust flex basis */
+    }
+    .productdisplay-main-img {
+        max-height: 600px; /* Adjust max height */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .productdisplay {
+        /* Stack columns vertically */
+        flex-direction: column;
+        margin: 1.5rem auto;
+        width: 95%;
+    }
+
+    .productdisplay-left {
+        /* Arrange thumbnails horizontally below main image */
+        flex-direction: column-reverse; /* Put main image first */
+        align-items: center; /* Center items */
+        flex: 1 1 auto; /* Reset flex */
+        width: 100%; /* Take full width */
+    }
+
+    .productdisplay-img-list {
+        flex-direction: row; /* Thumbnails side-by-side */
+        justify-content: center; /* Center thumbnails */
+        flex-wrap: wrap; /* Allow wrapping */
+        width: 100%;
+        margin-top: 1rem; /* Space above thumbnails */
+    }
+
+    .productdisplay-img-list img {
+        max-height: 5rem; /* Smaller thumbnails */
+        max-width: 4rem;
+    }
+
+    .productdisplay-main-img-container {
+        width: 100%; /* Ensure container takes width */
+        max-width: 450px; /* Limit width on mobile */
+    }
+
+    .productdisplay-main-img {
+         max-height: 450px; /* Adjust max height for mobile */
+    }
+
+    .productdisplay-right {
+        margin-top: 2rem; /* Add space above right content */
+        flex: 1 1 auto; /* Reset flex */
+        width: 100%; /* Take full width */
+    }
+
+    .productdisplay-right h1 {
+        font-size: clamp(1.4rem, 5vw, 1.8rem); /* Adjust font size */
+    }
+
+    .productdisplay-right-prices {
+        margin-bottom: 1rem;
+        gap: 1rem;
+    }
+     .productdisplay-right-price-new {
+        font-size: 1.5rem;
+    }
+     .productdisplay-right-price-old {
+        font-size: 1rem;
+    }
+
+    .productdisplay-right-size h1 {
+        font-size: 1.1rem;
+    }
+
+    .productdisplay-right-sizes div {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .productdisplay-right button {
+        width: 100%;
+        max-width: none; /* Allow full width */
+        align-self: center; /* Center button */
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+    }
+}
+

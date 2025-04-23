@@ -1,0 +1,301 @@
+/* .navbar{
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    box-shadow: 0 1px 3px -2px black;
+}
+.nav-logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-logo p{
+    color: #171717;
+    font-size: 38px;
+    font-weight: 600;
+}
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #626262;
+}
+.nav-menu li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+}
+.nav-menu hr{
+    border: none;
+    width: 80%;
+    height:3px;
+    border-radius: 10px;
+    background: #ff4141;
+}
+.nav-login-cart{
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+.nav-login-card button{
+    width: 157px;
+    height: 58px;
+    outline: none;
+    border: 1px solid #7a7a7a;
+    border-radius: 75px;
+    color: #515151;
+    font-size: 20px;
+    background: white;
+    cursor: pointer;
+}
+.nav-login-card button:active{
+    background: #f3f3f3;
+}
+.nav-cart-count{
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:-35px;
+    margin-left: -55px;
+    border-radius: 11px;
+    font-size: 14px;
+    background: red;
+    color: #fff;
+} */
+
+/* d:\Coding\React practice\ecommerce clone\frontend\src\Components\Navbar\Navbar.css */
+
+.navbar {
+    display: flex;
+    /* Use space-between to push logo/cart to edges, menu in center */
+    justify-content: space-between;
+    align-items: center; /* Vertically align items */
+    padding: 16px 4%; /* Use percentage padding for horizontal responsiveness */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    position: sticky; /* Make navbar sticky */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure full width when sticky */
+    background-color: white; /* Background needed for sticky */
+    z-index: 100; /* Ensure it stays on top */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo img {
+    /* Constrain logo image height */
+    height: 40px;
+    width: auto; /* Maintain aspect ratio */
+}
+
+.nav-logo p {
+    color: #171717;
+    /* Responsive font size */
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 600;
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    /* Responsive gap */
+    gap: clamp(20px, 4vw, 50px);
+    font-size: clamp(16px, 2vw, 18px); /* Responsive font size */
+    font-weight: 500;
+    color: #626262;
+    margin: 0; /* Remove default ul margin */
+    padding: 0; /* Remove default ul padding */
+}
+
+.nav-menu li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    position: relative; /* Needed for absolute positioning of hr */
+    padding-bottom: 5px; /* Space for the hr */
+}
+
+/* Style the Link directly for better semantics and click area */
+.nav-menu li a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from li */
+    padding: 5px; /* Add padding for easier clicking */
+    border-radius: 4px; /* Add subtle rounding */
+    transition: background-color 0.2s ease; /* Smooth hover */
+}
+
+/* Add focus style for accessibility */
+.nav-menu li a:focus-visible {
+    outline: 2px solid #ff4141;
+    outline-offset: 2px;
+}
+
+/* Optional: Hover effect on menu items */
+.nav-menu li a:hover {
+   color: #171717; /* Darken text on hover */
+}
+
+
+.nav-menu hr {
+    border: none;
+    width: 80%;
+    height: 3px;
+    border-radius: 10px;
+    background: #ff4141;
+    position: absolute; /* Position relative to li */
+    bottom: 0; /* Align to the bottom */
+    left: 10%; /* Center it (100% - 80%)/2 */
+}
+
+.nav-login-card {
+    display: flex;
+    align-items: center;
+    /* Responsive gap */
+    gap: clamp(25px, 3vw, 45px);
+    position: relative; /* Needed for cart count positioning */
+}
+
+/* Style the button within the correct parent class */
+.nav-login-card button {
+    /* Use padding for flexible width */
+    padding: 10px 25px;
+    /* min-width: 120px; */ /* Optional: set a minimum width */
+    height: 48px; /* Slightly reduced height */
+    outline: none;
+    border: 1px solid #7a7a7a;
+    border-radius: 75px; /* Keep pill shape */
+    color: #515151;
+    font-size: clamp(16px, 2vw, 18px); /* Responsive font size */
+    background: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+}
+
+/* Add hover and active states */
+.nav-login-card button:hover {
+    background: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-login-card button:active {
+    background: #f3f3f3;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Add focus style for accessibility */
+.nav-login-card button:focus-visible {
+     border-color: #ff4141;
+     box-shadow: 0 0 0 2px rgba(255, 65, 65, 0.3);
+}
+
+
+.nav-login-card .cart-icon-link {
+    position: relative; /* Set relative positioning context for the count */
+    display: inline-block; /* Ensure it takes space */
+}
+
+.nav-login-card img {
+    height: 28px; /* Adjust cart icon size if needed */
+    width: auto;
+    cursor: pointer;
+    vertical-align: middle; /* Align icon better with button */
+}
+
+.nav-cart-count {
+    width: 20px; /* Slightly smaller */
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Position absolutely relative to the cart icon link */
+    position: absolute;
+    top: -8px;   /* Adjust position */
+    right: -10px; /* Adjust position */
+    /* Remove negative margins */
+    /* margin-top:-35px; */
+    /* margin-left: -55px; */
+    border-radius: 50%; /* Make it perfectly circular */
+    font-size: 12px; /* Smaller font size */
+    background: red;
+    color: white;
+    font-weight: bold;
+    border: 1px solid white; /* Optional: add border for contrast */
+}
+
+/* --- Media Query for smaller screens --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 4%; /* Reduce padding */
+    }
+
+    /* .nav-logo p {
+        /* Hide text on small screens if needed, or just let clamp handle it */
+        /* display: none; */
+    } */
+
+    .nav-menu {
+        gap: 20px; /* Reduce gap */
+    }
+
+    .nav-menu li a {
+        font-size: 15px; /* Adjust font size */
+    }
+
+    .nav-login-card {
+        gap: 20px; /* Reduce gap */
+    }
+
+    .nav-login-card button {
+        padding: 8px 18px; /* Reduce button padding */
+        height: 40px; /* Reduce button height */
+        font-size: 15px;
+    }
+
+    .nav-login-card img {
+        height: 25px; /* Slightly smaller icon */
+    }
+
+    .nav-cart-count {
+        width: 18px;
+        height: 18px;
+        font-size: 11px;
+        top: -6px;
+        right: -8px;
+    }
+
+
+/* Optional: Further adjustments for very small screens */
+@media (max-width: 480px) {
+     /* Example: Hide menu text, show hamburger icon (requires JS/React state change) */
+    /* .nav-menu { display: none; } */
+    /* .hamburger-icon { display: block; } */
+
+    .nav-logo p {
+        font-size: 20px; /* Further reduce size */
+    }
+
+     .nav-login-card button {
+        padding: 6px 12px;
+        height: 36px;
+        font-size: 14px;
+     }
+}

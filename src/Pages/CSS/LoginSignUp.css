@@ -1,0 +1,223 @@
+/* .loginsignup{
+    width: 100%;
+    height: 90vh;
+    background: #fce3fe;
+    padding-top: 100px;
+}
+.loginsignup-container{
+    width: 580px;
+    height: 700px;
+    background: white;
+    margin: auto;
+    padding: 40px 60px;
+}
+.loginsignup-container h1{
+    margin: 20px 0px;
+}
+.loginsignup-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+    margin-top: 30px;
+
+}
+.loginsignup-fields input{
+    height: 72px;
+    width: 100%;
+    padding-left: 20px;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    color: #5c5c5c;
+    font-size: 18px;
+
+}
+.loginsignup-container button{
+    width: 580px;
+    height: 72px;
+    color: white;
+    background: #ff4141;
+    margin-top: 30px;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+.loginsignup-login{
+    margin-top: 20px;
+    color: #5c5c5c;
+    font-size: 18px;
+    font-weight: 500;
+}
+.loginsignup-login span{
+    color: #ff4141;
+    font-weight: 600;
+}
+.loginsignup-agree{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    gap: 20px;
+    color: #5c5c5c;
+    font-size: 18px;
+    font-weight: 500;
+} */
+
+/* General page setup */
+.loginsignup {
+    width: 100%;
+    /* Use min-height instead of height for flexibility */
+    min-height: 90vh;
+    background: #fce3fe;
+    /* Use padding for spacing, flexbox for centering */
+    display: flex; /* Use flexbox to easily center the container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 50px 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* The main form container */
+.loginsignup-container {
+    /* Use max-width for responsiveness, allow shrinking */
+    width: 100%; /* Take available width */
+    max-width: 580px; /* Limit maximum width */
+    /* Remove fixed height, let content determine height */
+    /* height: 700px; */
+    background: white;
+    /* Remove margin: auto; flexbox handles centering now */
+    /* margin: auto; */
+    padding: 40px 50px; /* Adjust padding slightly */
+    box-sizing: border-box; /* Include padding in width calculation */
+    border-radius: 8px; /* Optional: Add subtle rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+}
+
+/* Heading inside the container */
+.loginsignup-container h1 {
+    margin: 0 0 30px 0; /* Adjust margin: remove top, increase bottom */
+    text-align: center; /* Center the heading */
+    font-size: 28px; /* Slightly adjust font size */
+    color: #333; /* Slightly darker color for better contrast */
+}
+
+/* Container for input fields */
+.loginsignup-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduce gap slightly */
+    /* Removed margin-top, handled by h1 margin-bottom */
+    /* margin-top: 30px; */
+}
+
+/* Input field styling */
+.loginsignup-fields input {
+    height: 55px; /* Reduce height slightly */
+    width: 100%; /* Keep full width */
+    padding: 0 20px; /* Adjust padding */
+    border: 1px solid #c9c9c9;
+    border-radius: 4px; /* Add slight rounding */
+    outline: none;
+    color: #5c5c5c;
+    font-size: 16px; /* Adjust font size */
+    box-sizing: border-box; /* Include padding/border in width/height */
+    font-family: inherit; /* Inherit font from parent */
+}
+
+/* Focus state for inputs */
+.loginsignup-fields input:focus {
+    border-color: #ff4141; /* Highlight border on focus */
+}
+
+/* Submit button styling */
+.loginsignup-container button {
+    /* Make button full width of its container */
+    width: 100%;
+    height: 55px; /* Match input height */
+    color: white;
+    background: #ff4141;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px; /* Match input rounding */
+    font-size: 18px; /* Adjust font size */
+    font-weight: 600; /* Slightly bolder */
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Add hover effect */
+    font-family: inherit; /* Inherit font from parent */
+}
+
+/* Button hover state */
+.loginsignup-container button:hover {
+    background: #e03030; /* Darken button on hover */
+}
+
+/* "Already have an account?" text */
+.loginsignup-login {
+    margin-top: 25px; /* Adjust spacing */
+    color: #5c5c5c;
+    font-size: 15px; /* Adjust font size */
+    font-weight: 500;
+    text-align: center; /* Center this text */
+}
+
+/* Link style within the login text */
+.loginsignup-login span {
+    color: #ff4141;
+    font-weight: 600;
+    cursor: pointer; /* Indicate it's clickable */
+    text-decoration: none; /* Remove underline if it's not an actual <a> tag */
+}
+.loginsignup-login span:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+/* Agreement checkbox section */
+.loginsignup-agree {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    gap: 10px; /* Reduce gap */
+    color: #5c5c5c;
+    font-size: 14px; /* Adjust font size */
+    font-weight: 500;
+}
+
+/* Style the checkbox itself (optional, requires specific HTML structure) */
+.loginsignup-agree input[type="checkbox"] {
+    margin: 0; /* Remove default margin */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+    .loginsignup-container {
+        padding: 30px 25px; /* Reduce padding on smaller screens */
+        max-width: 90%; /* Allow container to be wider relative to screen */
+    }
+
+    .loginsignup-container h1 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .loginsignup-fields {
+        gap: 15px;
+    }
+
+    .loginsignup-fields input,
+    .loginsignup-container button {
+        height: 50px; /* Slightly smaller inputs/button */
+        font-size: 16px;
+    }
+
+    .loginsignup-login,
+    .loginsignup-agree {
+        font-size: 13px; /* Smaller text */
+        margin-top: 20px;
+    }
+     .loginsignup-agree {
+        gap: 8px;
+    }
+}
+
