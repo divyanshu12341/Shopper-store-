@@ -1,119 +1,4 @@
-// import React, { useContext } from 'react'
-// import './cartItems.css'
-// import { ShopContext } from '../../Context/shopContext'
-// import remove_icon from '../assets/cart_cross_icon.png';
 
-// const CartItems = () => {
-//     const {all_product,cartItems,removeFromCart} = useContext(ShopContext);
-//   return (  <div>    
-//          <div className='cartitems'>
-//         <div className="cartitems-format-main">
-//             <p>Products</p>
-//             <p>Title</p>
-//             <p>Price</p>
-//             <p>Quantity</p>
-//             <p>Total</p>
-//             <p>Remove</p>
-//         </div>
-//         <hr />
-//        {all_product.map((e)=>{
-//         if(cartItems[e.id>0]){
-//             return(
-//                  <div>
-//             <div className='cartItemsFormat'>
-//                 <img src="" alt="" className='carticon-product-icon' />
-//                 <p></p>
-//                 <p></p>
-//                 <button className='cartitems-quantity'></button>
-//                 <p></p>
-//                 <img src={remove_icon} onClick = {()=>{removeFromCart()}} alt="" />
-//             </div>
-//         </div>
-//             )
-//         }
-//        })}
-//   )
-
-
-// export default CartItems;
-
-// import React, { useContext } from 'react';
-// import './cartItems.css';
-// import { ShopContext } from '../../Context/shopContext';
-// import remove_icon from '../assets/cart_cross_icon.png';
-
-// const CartItems = () => {
-//     const { getTotalCartAmount,all_product, cartItems, removeFromCart } = useContext(ShopContext);
-
-//     return ( // Added parentheses for better readability with multi-line JSX
-//         <div className='cartitems'>
-//             <div className="cartitems-format-main">
-//                 <p>Products</p>
-//                 <p>Title</p>
-//                 <p>Price</p>
-//                 <p>Quantity</p>
-//                 <p>Total</p>
-//                 <p>Remove</p>
-//             </div>
-//             <hr />
-//             {all_product.map((e) => {
-//                 if (cartItems[e.id] > 0) {
-//                     return (
-//                         <div key={e.id}> 
-//                             <div className='cartitems-format cartitems-format-main'>
-//                                 <img src={e.image} alt="" className='carticon-product-icon' />
-//                                 <p>{e.name}</p> 
-//                                 <p>${e.new_price}</p> 
-//                                 <button className='cartitems-quantity'>{cartItems[e.id]}</button> 
-//                                 <p>${e.new_price * cartItems[e.id]}</p> 
-//                                 <img
-//                                     className='cartitems-remove-icon' 
-//                                     src={remove_icon}
-//                                     onClick={() => { removeFromCart(e.id) }} 
-//                                     alt="Remove Item"
-//                                 />
-//                             </div>
-//                             <hr /> 
-//                         </div>
-//                     );
-//                 }
-//                 return null; 
-//             })}
-//            <div className="cartitems-down">
-//             <div className="cartitems-total">
-//                 <h1>Cart Totals</h1>
-//                 <div>
-//                     <div className="cartitems-total-item">
-//                         <p>SubTotal</p>
-//                         <p>${getTotalCartAmount()}</p>
-//                     </div>
-//                     <hr />
-//                     <div className="cartitems-total-item">
-//                         <p>Shipping</p>
-//                         <p>Free</p>
-//                     </div>
-//                      <hr />
-//                      <div className="cartitems-total-item">
-//                         <h3>Total</h3>
-//                         <h3>${getTotalCartAmount()}</h3>
-
-//                      </div>
-//                 </div>
-//                 <button>PROCEED TO CHECKOUT</button>
-//             </div>
-//             <div className="cartitems-promocode">
-//                 <p>If you have a promo code,Enter it here</p>
-//                 <div className="cartitems-promobox">
-//                     <input type="text" placeholder = "Promo code" />
-//                     <button>Submit</button>
-//                 </div>
-//             </div>
-//            </div>
-//         </div> 
-//     ); 
-// }; 
-
-// export default CartItems;
 
 
 import React, { useContext } from 'react';
@@ -122,14 +7,26 @@ import { ShopContext } from '../../Context/shopContext';
 import remove_icon from '../assets/cart_cross_icon.png';
 
 const CartItems = () => {
+    // Destructure all needed values from context
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
 
-    // Calculate the total amount once to avoid calling the function multiple times
+    // Defensive check: Ensure context values are loaded before proceeding
+    // This might indicate a loading state is needed if context loads asynchronously
+    if (!all_product || !cartItems || !getTotalCartAmount || !removeFromCart) {
+        // Optionally return a loading indicator or null
+        console.warn("ShopContext values not fully loaded in CartItems.");
+        return <div>Loading cart...</div>; // Or return null;
+    }
+
+    // Calculate the total amount once
     const totalAmount = getTotalCartAmount();
+
+    // Filter products that are actually in the cart to map over
+    // This can be slightly more efficient than mapping all products and checking inside
+    const itemsInCart = all_product.filter(product => product && cartItems[product.id] > 0);
 
     return (
         <div className='cartitems'>
-            {/* ... (Item mapping section remains the same) ... */}
             <div className="cartitems-format-main">
                 <p>Products</p>
                 <p>Title</p>
@@ -139,66 +36,83 @@ const CartItems = () => {
                 <p>Remove</p>
             </div>
             <hr />
-            {all_product.map((e) => {
-                if (cartItems[e.id] > 0) {
+
+            {/* Map only over items actually in the cart */}
+            {itemsInCart.length > 0 ? (
+                itemsInCart.map((e) => {
+                    // Calculate item total safely
+                    const itemTotal = (typeof e.new_price === 'number' && typeof cartItems[e.id] === 'number')
+                        ? (e.new_price * cartItems[e.id]).toFixed(2)
+                        : 'N/A'; // Handle potential non-numeric values
+
                     return (
-                        <div key={e.id}>
+                        // Use React.Fragment for key when div isn't needed, or keep div
+                        <React.Fragment key={e.id}>
                             <div className='cartitems-format cartitems-format-main'>
-                                <img src={e.image} alt={e.name} className='carticon-product-icon' /> {/* Added alt text */}
-                                <p>{e.name}</p>
-                                <p>${e.new_price.toFixed(2)}</p> {/* Format price */}
+                                <img src={e.image} alt={e.name || 'Product Image'} className='carticon-product-icon' />
+                                <p>{e.name || 'N/A'}</p>
+                                <p>${typeof e.new_price === 'number' ? e.new_price.toFixed(2) : 'N/A'}</p>
                                 <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-                                <p>${(e.new_price * cartItems[e.id]).toFixed(2)}</p> {/* Format total */}
+                                <p>${itemTotal}</p>
                                 <img
                                     className='cartitems-remove-icon'
                                     src={remove_icon}
                                     onClick={() => { removeFromCart(e.id) }}
-                                    alt="Remove Item"
+                                    alt={`Remove ${e.name || 'item'}`} // More descriptive alt text
+                                    role="button" // Indicate it's interactive
+                                    tabIndex={0} // Make it focusable
+                                    onKeyPress={(event) => { // Allow removal with Enter key
+                                        if (event.key === 'Enter') {
+                                            removeFromCart(e.id);
+                                        }
+                                    }}
                                 />
                             </div>
                             <hr />
-                        </div>
+                        </React.Fragment>
                     );
-                }
-                return null;
-            })}
+                })
+            ) : (
+                <p className="cartitems-empty-message">Your cart is empty.</p> // Show a message if cart is empty
+            )}
+
            {/* --- Cart Totals Section --- */}
            <div className="cartitems-down">
-            <div className="cartitems-total">
-                <h1>Cart Totals</h1>
-                <div>
-                    {/* Use the calculated totalAmount for SubTotal */}
-                    <div className="cartitems-total-item">
-                        <p>SubTotal</p>
-                        <p>${totalAmount.toFixed(2)}</p> {/* <-- Use calculated amount and format */}
+                <div className="cartitems-total">
+                    <h1>Cart Totals</h1>
+                    <div>
+                        <div className="cartitems-total-item">
+                            <p>SubTotal</p>
+                            {/* Ensure totalAmount is a number before calling toFixed */}
+                            <p>${typeof totalAmount === 'number' ? totalAmount.toFixed(2) : '0.00'}</p>
+                        </div>
+                        <hr />
+                        <div className="cartitems-total-item">
+                            <p>Shipping Fee</p>
+                            <p>Free</p> {/* Or calculate dynamically if needed */}
+                        </div>
+                        <hr />
+                        <div className="cartitems-total-item">
+                            <h3>Total</h3>
+                            {/* Assuming Total = SubTotal + Shipping (which is Free here) */}
+                            <h3>${typeof totalAmount === 'number' ? totalAmount.toFixed(2) : '0.00'}</h3>
+                        </div>
                     </div>
-                    <hr />
-                    <div className="cartitems-total-item">
-                        <p>Shipping Fee</p> {/* Changed label for clarity */}
-                        <p>Free</p> {/* Assuming shipping is always free for now */}
+                    {/* Disable button if cart is empty */}
+                    <button disabled={itemsInCart.length === 0}>PROCEED TO CHECKOUT</button>
+                </div>
+                {/* --- Promo Code Section --- */}
+                <div className="cartitems-promocode">
+                    <p>If you have a promo code, Enter it here</p>
+                    <div className="cartitems-promobox">
+                        {/* Add state/handlers for input if functionality is needed */}
+                        <input type="text" placeholder="Promo code" />
+                        <button>Submit</button>
                     </div>
-                     <hr />
-                     {/* Use the calculated totalAmount for the final Total */}
-                     <div className="cartitems-total-item">
-                        <h3>Total</h3>
-                        {/* Assuming SubTotal and Total are the same if shipping is free */}
-                        <h3>${totalAmount.toFixed(2)}</h3> {/* <-- Use calculated amount and format */}
-                     </div>
                 </div>
-                <button>PROCEED TO CHECKOUT</button>
-            </div>
-            {/* --- Promo Code Section --- */}
-            <div className="cartitems-promocode">
-                <p>If you have a promo code, Enter it here</p>
-                <div className="cartitems-promobox">
-                    <input type="text" placeholder = "Promo code" />
-                    <button>Submit</button>
-                </div>
-            </div>
            </div>
         </div>
     );
 };
 
 export default CartItems;
-
