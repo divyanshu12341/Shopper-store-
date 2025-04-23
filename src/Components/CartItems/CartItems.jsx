@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './cartItems.css';
+import './CartItems.css';
 // Corrected casing for ShopContext import
 import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../assets/cart_cross_icon.png';
