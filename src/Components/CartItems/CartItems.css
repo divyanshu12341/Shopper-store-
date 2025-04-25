@@ -195,89 +195,130 @@
 
 @media(max-width: 768px) {
     .cartitems {
-        margin: 30px 20px;
+        margin: 20px 15px; /* Slightly less margin */
     }
     .cartitems-format-main {
-        display: none; 
+        display: none;
     }
     .cartitems-format {
-        grid-template-columns: 1fr; 
-        padding: 15px;
-        border: 1px solid #e2e2e2; 
-        margin-bottom: 15px;
-        text-align: center; 
+        grid-template-columns: 1fr;
+        padding: 12px; /* Slightly less padding */
+        border: 1px solid #e2e2e2;
+        margin-bottom: 12px; /* Slightly less bottom margin */
+        text-align: center;
+        font-size: 14px; /* Slightly smaller font */
     }
     .carticon-product-icon {
-        height: 80px; 
-        margin: 0 auto; 
+        height: 70px; /* Slightly smaller image */
+        margin: 0 auto 10px auto; /* Add bottom margin */
     }
     .cartitems-quantity {
-        margin: 10px auto;
+        margin: 8px auto; /* Adjust margin */
+        width: 45px; /* Adjust size */
+        height: 35px;
+        font-size: 13px; /* Smaller font */
     }
     .cartitems-remove-icon {
-        margin: 10px auto; 
+        width: 14px; /* Slightly smaller icon */
+        margin: 8px auto; /* Adjust margin */
     }
     .cartitems hr {
-        display: none; 
+        display: none;
     }
-    .cartitems-format p:nth-of-type(1)::before { content: "Title: "; font-weight: 600; }
-    .cartitems-format p:nth-of-type(2)::before { content: "Price: "; font-weight: 600; }
-    .cartitems-format .cartitems-quantity::before { content: "Qty: "; font-weight: 600; margin-right: 5px;}
-    .cartitems-format p:nth-of-type(3)::before { content: "Total: "; font-weight: 600; }
+    /* Adjust font size for pseudo-elements if needed */
+    .cartitems-format p:nth-of-type(1)::before,
+    .cartitems-format p:nth-of-type(2)::before,
+    .cartitems-format .cartitems-quantity::before,
+    .cartitems-format p:nth-of-type(3)::before {
+        font-size: 14px; /* Match item font size */
+    }
+
 
     .cartitems-down {
         flex-direction: column;
-        gap: 40px; 
-        margin: 50px 0;
+        gap: 30px; /* Slightly less gap */
+        margin: 40px 0; /* Adjust margin */
     }
     .cartitems-total {
-        
-        order: 2; 
+        order: 2;
+        gap: 10px; /* Slightly less gap */
     }
+     .cartitems-total h1 {
+        font-size: 18px; /* Smaller heading */
+     }
+     .cartitems-total-item, .cartitems-total-item h3 {
+        font-size: 14px; /* Smaller text */
+     }
     .cartitems-promocode {
-       
-       order: 1; 
+       order: 1;
     }
     .cartitems-total button {
-        width: 100%; 
-        max-width: 250px; 
-        margin: 20px auto 0 auto; 
-        display: block;
+        width: 100%;
+        max-width: 220px; /* Slightly smaller max width */
+        margin: 15px auto 0 auto; /* Adjust margin */
+        height: 45px; /* Adjust height */
+        font-size: 14px; /* Smaller font */
     }
     .cartitems-promobox {
-        width: 100%; 
-        padding-left: 10px;
+        width: 100%;
+        padding-left: 8px; /* Adjust padding */
+        height: 45px; /* Adjust height */
+    }
+    .cartitems-promobox input {
+         font-size: 13px; /* Smaller font */
     }
     .cartitems-promobox button {
-        width: 90px;
+        width: 80px; /* Adjust width */
+        height: 45px; /* Match box height */
+        font-size: 13px; /* Smaller font */
     }
 }
 
 @media(max-width: 500px) {
     .cartitems {
-        margin: 20px 10px;
+        margin: 15px 8px; /* Even less margin */
     }
      .cartitems-format {
-        padding: 10px;
-        gap: 10px;
+        padding: 8px; /* Even less padding */
+        margin-bottom: 10px; /* Even less margin */
+        font-size: 13px; /* Even smaller font */
      }
+     .carticon-product-icon {
+        height: 60px; /* Smaller image */
+     }
+     .cartitems-quantity {
+        width: 40px;
+        height: 30px;
+        font-size: 12px;
+     }
+     .cartitems-remove-icon {
+        width: 12px;
+     }
+      /* Adjust font size for pseudo-elements if needed */
+    .cartitems-format p:nth-of-type(1)::before,
+    .cartitems-format p:nth-of-type(2)::before,
+    .cartitems-format .cartitems-quantity::before,
+    .cartitems-format p:nth-of-type(3)::before {
+        font-size: 13px; /* Match item font size */
+    }
+
      .cartitems-total h1 {
-        font-size: 18px;
+        font-size: 16px; /* Smaller heading */
      }
      .cartitems-total-item, .cartitems-total-item h3 {
-        font-size: 14px;
+        font-size: 13px; /* Smaller text */
      }
      .cartitems-promocode p {
-        font-size: 14px;
+        font-size: 13px; /* Smaller text */
      }
      .cartitems-promobox input, .cartitems-promobox button {
-        font-size: 13px;
+        font-size: 12px; /* Smaller font */
      }
      .cartitems-promobox button {
-        width: 80px;
+        width: 70px; /* Adjust width */
      }
      .cartitems-total button {
-        height: 40px;
-        font-size: 13px;
+        height: 35px; /* Adjust height */
+        font-size: 12px; /* Smaller font */
      }
 }

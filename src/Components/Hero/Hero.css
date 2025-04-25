@@ -1,52 +1,180 @@
-.hero{
-    height: 100vw;
-    background: linear-gradient(180deg,#fde1ff,#e1ffea 60%);
+/* === Base Styles (Desktop First) === */
+.hero {
+    /* Use min-height instead of height, allow content to grow */
+    min-height: 100vh; /* Ensure it takes at least the full viewport height */
+    background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
     display: flex;
+    box-sizing: border-box;
+    /* Add some default padding for smaller screens */
+    padding: 2rem 4%;
 }
-.hero-left{
-    flex:1;
+
+.hero-left {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
-    padding-left: 180px;
+    gap: 1.25rem; /* 20px */
+    /* Removed fixed padding-left, handled by parent padding */
+    /* padding-left: 180px; */
     line-height: 1.1;
 }
-.hero-left h2{
+
+.hero-left h2 {
     color: #090909;
-    font-size: 26px;
+    /* Responsive font size */
+    font-size: clamp(1.2rem, 3vw, 1.6rem); /* 26px */
     font-weight: 600;
+    margin: 0; /* Add margin reset */
 }
-.hero-left p{
-    color: #171717;
-    font-size: 100px;
-    font-weight: 700;   
-}
-.hero-hand-icon{
+
+.hero-left .hero-hand-icon { /* More specific selector */
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.25rem; /* 20px */
 }
-.hero-hand-icon img{
-    width: 105px;
+
+.hero-left .hero-hand-icon p { /* Target 'new' text */
+    color: #171717;
+    /* Responsive font size */
+    font-size: clamp(3rem, 10vw, 5rem); /* Adjust based on 100px */
+    font-weight: 700;
+    margin: 0; /* Add margin reset */
 }
-.hero-latest-btn{
-    display: flex;
+
+.hero-left .hero-hand-icon img {
+    /* Responsive width */
+    width: clamp(4rem, 10vw, 6.5rem); /* 105px */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.hero-left > div > p { /* Target 'Collections' and 'for everyone' */
+    color: #171717;
+    /* Responsive font size */
+    font-size: clamp(3rem, 10vw, 5rem); /* Adjust based on 100px */
+    font-weight: 700;
+    margin: 0; /* Add margin reset */
+}
+
+.hero-latest-btn {
+    display: inline-flex; /* Use inline-flex for better alignment */
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    width: 310px;
-    height: 70px;
+    gap: 1rem; /* 15px */
+    /* Flexible width and height using padding */
+    padding: 1rem 2rem;
+    /* width: 310px; */ /* Remove fixed width */
+    /* height: 70px; */ /* Remove fixed height */
+    min-height: 50px; /* Ensure minimum height */
+    max-width: 310px; /* Keep max-width if desired */
+    width: auto; /* Allow button to size naturally */
     border-radius: 75px;
-    margin-top: 30px;
+    margin-top: 1.875rem; /* 30px */
     background-color: #ff4141;
     color: #fff;
-    font-size: 22px;
+    /* Responsive font size */
+    font-size: clamp(1rem, 2.5vw, 1.25rem); /* 22px */
     font-weight: 500;
+    cursor: pointer; /* Add cursor pointer */
+    text-decoration: none; /* Remove underline if it's a link */
+    border: none; /* Ensure no border */
+    transition: background-color 0.2s ease;
 }
-.hero-right{
+.hero-latest-btn:hover {
+    background-color: #e03030;
+}
+
+.hero-latest-btn img {
+    height: clamp(1rem, 2.5vw, 1.25rem); /* Match font size roughly */
+    width: auto;
+}
+
+.hero-right {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 0; /* Prevent flex item overflow */
+}
+
+.hero-right img {
+    max-width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+    /* Optional max-height */
+    /* max-height: 80vh; */
+}
+
+/* === Responsive Styles === */
+
+/* --- Tablet View --- */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 2rem 5%; /* Adjust padding */
+    }
+    .hero-left {
+        gap: 1rem;
+    }
+    /* Adjust font sizes if needed */
+}
+
+/* --- Mobile View --- */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Stack left and right sections */
+        min-height: auto; /* Allow height to shrink */
+        padding: 3rem 5%; /* Adjust padding */
+        text-align: center; /* Center text */
+    }
+
+    .hero-left {
+        align-items: center; /* Center items horizontally */
+        padding-left: 0; /* Remove specific padding */
+        gap: 0.8rem;
+    }
+
+    .hero-left .hero-hand-icon {
+        justify-content: center; /* Center hand icon content */
+        gap: 1rem;
+    }
+
+    .hero-latest-btn {
+        margin-top: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        width: 80%; /* Make button wider */
+        max-width: 300px;
+    }
+
+    .hero-right {
+        margin-top: 2rem; /* Add space above image */
+    }
+
+    .hero-right img {
+        max-width: 80%; /* Slightly reduce image size */
+    }
+}
+
+/* --- Smaller Mobile View --- */
+@media (max-width: 480px) {
+    .hero {
+        padding: 2rem 5%;
+    }
+    .hero-left h2 {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+    }
+    .hero-left .hero-hand-icon p,
+    .hero-left > div > p {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+    .hero-left .hero-hand-icon img {
+        width: clamp(3rem, 8vw, 5rem);
+    }
+    .hero-latest-btn {
+        width: 90%;
+        padding: 0.7rem 1.2rem;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+    .hero-right img {
+        max-width: 90%; /* Allow image to be slightly larger relative to small screen */
+    }
 }

@@ -1,25 +1,94 @@
-.new-collections{
+.new-collections {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    height: 90vh;
+    gap: 1rem; /* Consistent gap */
+    /* height: 90vh; */ /* REMOVED fixed height */
+    padding: 3rem 2% 5rem 2%; /* Add vertical padding (adjust bottom as needed) */
+    box-sizing: border-box;
+    width: 100%;
 }
-.new-collections h1{
+
+.new-collections h1 {
     color: #171717;
-    font-size: 50px;
+    /* Responsive font size */
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
     font-weight: 600;
+    text-align: center;
+    margin: 0;
 }
-.new-collections hr{
+
+.new-collections hr {
     width: 200px;
+    max-width: 60%;
     height: 6px;
     border-radius: 10px;
     background: #252525;
+    border: none;
+    margin: 0.5rem 0 1.5rem 0; /* Adjust vertical margin */
 }
-.collections{
+
+.collections {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 50px;
-    gap: 30px;
-    
+    /* Responsive grid columns */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* margin: 50px; */ /* REMOVED large margin */
+    margin-top: 2rem; /* Use margin-top instead */
+    gap: 1.5rem; /* Adjust gap */
+    width: 100%;
+    max-width: 1280px; /* Consistent max-width */
+    justify-content: center;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 1024px) {
+    .new-collections hr {
+        width: 180px;
+        height: 5px;
+    }
+    .collections {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+    }
+}
+
+/* --- Mobile Styles --- */
+@media (max-width: 768px) {
+    .new-collections {
+        padding: 2rem 4% 4rem 4%; /* Adjust padding */
+        gap: 0.8rem;
+    }
+    .new-collections hr {
+        width: 150px;
+        max-width: 50%;
+        height: 4px;
+        margin-bottom: 1rem;
+    }
+    .collections {
+        /* --- Change to 1 column --- */
+        grid-template-columns: 1fr;
+        gap: 1.5rem; /* Increase gap slightly for single column */
+        margin-top: 1rem;
+        /* Optional: Limit the width of the single column */
+        /* max-width: 350px; */
+        /* justify-items: center; /* Center item content within the column */
+    }
+}
+
+/* --- Adjust or Remove 480px Breakpoint --- */
+/* This breakpoint might not be needed if 768px handles the single column well */
+@media (max-width: 480px) {
+    .new-collections hr {
+        width: 120px;
+        height: 3px;
+    }
+    .collections {
+        /* Ensure it stays 1 column */
+        grid-template-columns: 1fr;
+        gap: 1rem; /* Adjust gap if needed */
+        /* Optional: Further limit the width on very small screens */
+        /* max-width: 300px; */
+    }
 }

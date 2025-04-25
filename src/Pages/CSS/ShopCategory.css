@@ -1,40 +1,137 @@
-.shopcategory-banner{
+/* --- Existing Styles --- */
+.shopcategory-banner {
     display: block;
     margin: 30px auto;
     width: 82%;
-}
-.shopcategory-indexSort{
+  }
+  
+  .shopcategory-indexSort {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 170px;
-}
-.shopcategory-sort{
+    margin: 0px 170px; /* Large margin for desktop */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px; /* Add gap for wrapped items */
+  }
+  
+  .shopcategory-sort {
     padding: 10px 20px;
     border-radius: 40px;
     border: 1px solid #888;
-}
-.shopcategory-indexSort p span{
+    cursor: pointer; /* Add pointer cursor */
+  }
+  
+  .shopcategory-indexSort p span {
     font-weight: 600;
-}
-.shopcategory-products{
-    margin: 20px 170px;
+  }
+  
+  .shopcategory-products {
+    margin: 20px 170px; /* Large margin for desktop */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 80px;
-
-}
-.shopcategory-loadmore{
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 columns desktop */
+    gap: 30px; /* Use gap instead of just row-gap for consistency */
+    row-gap: 50px; /* Keep row-gap slightly larger if desired */
+  }
+  
+  .shopcategory-loadmore {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 150px auto;
-    width: 233px;
-    height: 69px;
+    margin: 100px auto; /* Reduced margin */
+    width: 200px; /* Slightly smaller */
+    height: 60px; /* Slightly smaller */
     border-radius: 75px;
     background: #ededed;
     color: #787878;
-    font-size: 18px;
+    font-size: 16px; /* Slightly smaller */
     font-weight: 500;
-    cursor:pointer;
-}
+    cursor: pointer;
+  }
+  
+  /* --- Responsive Styles --- */
+  
+  /* Medium Screens / Tablets */
+  @media(max-width: 1280px) {
+    .shopcategory-indexSort {
+      margin: 0px 80px; /* Reduce margin */
+    }
+    .shopcategory-products {
+      margin: 20px 80px; /* Reduce margin */
+      gap: 25px;
+      row-gap: 40px;
+    }
+  }
+  
+  /* Smaller Tablets / Large Phones */
+  @media(max-width: 1024px) {
+    .shopcategory-banner {
+      margin: 20px auto;
+      width: 90%; /* Increase relative width */
+    }
+    .shopcategory-indexSort {
+      margin: 0px 40px; /* Further reduce margin */
+    }
+    .shopcategory-products {
+      margin: 20px 40px; /* Further reduce margin */
+      grid-template-columns: 1fr 1fr 1fr; /* 3 columns */
+      gap: 20px;
+      row-gap: 35px;
+    }
+    .shopcategory-loadmore {
+      margin: 80px auto;
+      width: 180px;
+      height: 55px;
+      font-size: 15px;
+    }
+  }
+  
+  
+  /* Mobile Phones */
+  @media(max-width: 800px) {
+    .shopcategory-banner {
+      width: 95%; /* Almost full width */
+    }
+    .shopcategory-indexSort {
+      margin: 0px 20px; /* Minimal margin */
+      font-size: 13px; /* Adjust text size */
+    }
+    .shopcategory-sort {
+      padding: 8px 15px; /* Smaller padding */
+      font-size: 13px;
+    }
+     .shopcategory-indexSort p{
+      margin: 5px 0px; /* Add some margin when wrapped */
+    }
+    .shopcategory-products {
+      margin: 20px 20px; /* Minimal margin */
+      /* Change to 1 column for mobile */
+      grid-template-columns: 1fr; 
+      gap: 15px; /* Column gap is less relevant now */
+      row-gap: 30px; /* Keep or adjust row gap */
+    }
+    .shopcategory-loadmore {
+      margin: 60px auto;
+      width: 160px;
+      height: 50px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Very Small Mobile Phones (Inherits 1 column layout from above) */
+  @media(max-width: 500px) {
+    .shopcategory-indexSort {
+      margin: 0px 10px; /* Even smaller margin */
+      justify-content: space-around; /* Adjust alignment if needed */
+    }
+    .shopcategory-products {
+      margin: 15px 10px; /* Even smaller margin */
+      /* No need to repeat grid-template-columns: 1fr; */
+      row-gap: 25px; /* Adjust row gap if needed for very small screens */
+    }
+     .shopcategory-loadmore {
+      margin: 40px auto;
+      width: 140px;
+      height: 45px;
+      font-size: 13px;
+    }
+  }

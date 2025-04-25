@@ -1,4 +1,4 @@
-.offers{
+/* .offers{
     width: 65%;
     height: 65wh;
     display: flex;
@@ -42,4 +42,174 @@
     justify-content: flex-end;
     padding-top: 50px;
 
+} */
+
+/* === Base Styles (Desktop First) === */
+.offers {
+    /* Use max-width and percentage width for better control */
+    width: 90%;
+    max-width: 1200px; /* Limit maximum size */
+    /* height: 60vh; */ /* Avoid fixed height, let content dictate */
+    min-height: 50vh; /* Optional: ensure minimum height */
+    display: flex;
+    margin: 10rem auto 5rem auto; /* Adjust top/bottom margin */
+    /* Reduced horizontal padding */
+    padding: 0px 5%;
+    background-image: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%); /* Adjusted gradient end color slightly */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent potential overflow issues */
+}
+
+.offers-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 2rem; /* Add some padding to prevent text touching image */
+    box-sizing: border-box;
+}
+
+.offers-left h1 {
+    color: #171717;
+    /* Responsive font size */
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* min, preferred, max */
+    font-weight: 600;
+    line-height: 1.2; /* Improve line spacing */
+    margin: 0 0 0.5rem 0; /* Adjust margin */
+}
+
+.offers-left p {
+    color: #171717;
+    /* Responsive font size */
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 500; /* Slightly less bold */
+    margin: 0; /* Remove default margin */
+}
+
+.offers-left button {
+    /* Make button width more flexible */
+    width: auto; /* Let padding define width */
+    max-width: 280px; /* Keep max width */
+    padding: 0.8rem 2rem; /* Use padding for sizing */
+    /* height: 70px; */ /* Remove fixed height */
+    min-height: 50px; /* Set minimum height */
+    border-radius: 35px;
+    background: #ff4141;
+    border: none;
+    color: white;
+    /* Responsive font size */
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 2rem; /* Adjust margin */
+    transition: background-color 0.2s ease; /* Add transition */
+}
+
+.offers-left button:hover {
+    background-color: #e03030; /* Darken on hover */
+}
+
+.offers-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* padding-top: 50px; */ /* Removed fixed padding */
+    min-width: 0; /* Prevent flex item overflow */
+}
+
+.offers-right img {
+    max-width: 100%; /* Ensure image scales down */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure image fits well */
+    /* Optional: Add max-height if needed */
+    /* max-height: 500px; */
+}
+
+
+/* === Responsive Styles === */
+
+/* --- Tablet View --- */
+@media (max-width: 1024px) {
+    .offers {
+        padding: 0px 4%; /* Adjust padding */
+        margin-top: 8rem;
+        min-height: 40vh;
+    }
+    .offers-left {
+        padding-right: 1rem;
+    }
+    .offers-right img {
+        /* Optionally reduce image size slightly */
+        max-width: 90%;
+    }
+}
+
+/* --- Mobile View --- */
+@media (max-width: 768px) {
+    .offers {
+        flex-direction: column; /* Stack items vertically */
+        padding: 3rem 5%; /* Add vertical padding, adjust horizontal */
+        margin-top: 5rem; /* Reduce top margin */
+        text-align: center; /* Center text */
+        height: auto; /* Remove height constraints */
+        min-height: auto;
+    }
+
+    .offers-left {
+        align-items: center; /* Center items horizontally */
+        padding-right: 0; /* Remove right padding */
+        order: 2; /* Display text below image */
+        flex: 1 1 auto; /* Reset flex properties */
+    }
+
+    .offers-left h1 {
+        margin-bottom: 0.8rem;
+    }
+
+    .offers-left p {
+        margin-bottom: 1.5rem; /* Add space below paragraph */
+    }
+
+    .offers-left button {
+        margin-top: 0; /* Remove top margin */
+        width: 80%; /* Make button wider */
+        max-width: 300px; /* Adjust max width */
+        padding: 0.7rem 1.5rem;
+    }
+
+    .offers-right {
+        order: 1; /* Display image above text */
+        justify-content: center; /* Center image */
+        margin-bottom: 2rem; /* Add space below image */
+        flex: 1 1 auto; /* Reset flex properties */
+        width: 100%; /* Ensure it takes width */
+    }
+
+    .offers-right img {
+        max-width: 70%; /* Reduce image size significantly */
+    }
+}
+
+/* --- Smaller Mobile View --- */
+@media (max-width: 480px) {
+    .offers {
+        padding: 2rem 5%;
+        margin-top: 4rem;
+    }
+    .offers-left h1 {
+        /* Further adjust font size if needed */
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+     .offers-left p {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+    .offers-left button {
+        width: 90%;
+        padding: 0.6rem 1.2rem;
+        min-height: 45px;
+    }
+    .offers-right img {
+        max-width: 80%; /* Slightly larger image on very small screens */
+    }
 }

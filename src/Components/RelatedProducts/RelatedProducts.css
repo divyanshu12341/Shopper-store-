@@ -1,49 +1,47 @@
 /* src/Components/RelatedProducts/RelatedProducts.css */
 
+/* --- Keep Base and Tablet Styles the Same --- */
+
 .relatedproducts {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem; /* Space between elements */
-    /* Responsive margin */
-    margin: 4rem auto 6rem auto; /* Adjust vertical margins as needed */
+    gap: 1rem;
+    margin: 4rem auto 6rem auto;
     width: 90%;
-    max-width: 1280px; /* Limit max width */
+    max-width: 1280px;
     box-sizing: border-box;
 }
 
 .relatedproducts h1 {
     color: #171717;
-    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive font size */
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 600;
-    margin: 0; /* Remove default margin */
+    margin: 0;
+    text-align: center;
 }
 
 .relatedproducts hr {
     width: 200px;
-    max-width: 80%; /* Ensure it doesn't get too wide */
+    max-width: 80%;
     height: 6px;
     border-radius: 10px;
     background: #252525;
     border: none;
-    margin: 0.5rem 0 2rem 0; /* Adjust spacing around hr */
+    margin: 0.5rem 0 2rem 0;
 }
 
 .relatedproducts-item {
     display: grid;
-    /* Create responsive columns: min 200px wide, max 1fr (equal space) */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem; /* Gap between grid items */
-    width: 100%; /* Take full width of parent */
-    justify-content: center; /* Center items if they don't fill the row */
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
 }
-
-/* --- Media Queries for Responsiveness --- */
 
 @media (max-width: 1024px) {
     .relatedproducts-item {
         gap: 1.5rem;
-        /* Adjust minmax if needed for tablets */
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
     .relatedproducts hr {
@@ -52,10 +50,12 @@
     }
 }
 
+/* --- Mobile Styles Start Here --- */
 @media (max-width: 768px) {
     .relatedproducts {
-        margin: 3rem auto 4rem auto; /* Reduce vertical margins */
+        margin: 3rem auto 4rem auto;
         gap: 0.8rem;
+        width: 95%;
     }
     .relatedproducts hr {
         width: 120px;
@@ -63,20 +63,34 @@
         margin-bottom: 1.5rem;
     }
     .relatedproducts-item {
-        gap: 1rem;
-        /* Adjust minmax for mobile */
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem; /* Increase gap slightly for single column */
+        /* --- Change to 1 column --- */
+        grid-template-columns: 1fr;
+        /* Optional: Limit the width of the single column if desired */
+        /* max-width: 350px; */
+        /* justify-items: center; /* Center item content within the column */
     }
 }
 
+/* --- Remove or Adjust 480px Breakpoint --- */
+/* You might not need the 480px breakpoint anymore if 768px handles the single column */
+/* Or, adjust it for further refinement if needed */
 @media (max-width: 480px) {
+    .relatedproducts {
+        margin: 2rem auto 3rem auto; /* Further reduce margins */
+    }
     .relatedproducts-item {
-        /* Switch to 2 columns explicitly on very small screens */
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
+        gap: 1rem; /* Adjust gap if needed */
+        /* Ensure it stays 1 column */
+        grid-template-columns: 1fr;
+        /* max-width: 300px; /* Further adjust max-width if needed */
     }
      .relatedproducts hr {
         width: 100px;
     }
+     .relatedproducts h1 {
+         font-size: clamp(1.5rem, 5vw, 2rem);
+     }
 }
+/* --- Mobile Styles End Here --- */
 

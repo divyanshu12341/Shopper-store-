@@ -1,207 +1,370 @@
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 16px 4%; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); 
-    position: sticky; 
-    top: 0;
-    left: 0;
-    width: 100%; 
-    background-color: white; 
-    z-index: 100; 
-    box-sizing: border-box; 
+/* === CSS Variables === */
+:root {
+    --primary-color: #ff4141;
+    --text-dark: #171717;
+    --text-medium: #626262;
+    --text-light: #515151;
+    --border-color: #7a7a7a;
+    --border-light: #eee;
+    --background-light: white;
+    --background-hover: #f9f9f9;
+    --background-active: #f3f3f3;
+    --shadow-color-light: rgba(0, 0, 0, 0.08);
+    --shadow-color-medium: rgba(0, 0, 0, 0.1);
+    --focus-shadow-color: rgba(255, 65, 65, 0.3);
+    --cart-count-bg: red;
+    --cart-count-text: white;
+    --navbar-padding-desktop: 16px 4%;
+    --navbar-padding-tablet: 12px 5%;
+    --navbar-padding-mobile: 10px 4%;
+  }
+  
+  /* === Base Styles === */
+  .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--navbar-padding-desktop);
+      box-shadow: 0 2px 4px var(--shadow-color-light);
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--background-light);
+      z-index: 100; /* Ensure navbar is on top */
+      box-sizing: border-box;
+  }
+  
+  .nav-logo-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+  }
+  
+  .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  
+  .nav-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain; /* Good practice for logos */
+  }
+  
+  .nav-logo p {
+      color: var(--text-dark);
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 600;
+      margin: 0;
+  }
+  
+  .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      gap: clamp(20px, 4vw, 50px);
+      font-size: clamp(16px, 2vw, 18px);
+      font-weight: 500;
+      color: var(--text-medium);
+      margin: 0;
+      padding: 0;
+      /* Transition removed here, handled in mobile */
+  }
+  
+  .nav-menu li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 5px;
+  }
+  
+  .nav-menu li a {
+      text-decoration: none;
+      color: inherit;
+      padding: 5px;
+      border-radius: 4px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .nav-menu li a:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+  }
+  
+  .nav-menu li a:hover {
+     color: var(--text-dark);
+  }
+  
+  
+  .nav-menu hr {
+      border: none;
+      width: 80%;
+      height: 3px;
+      border-radius: 10px;
+      background: var(--primary-color);
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      margin: 0;
+  }
+  
+  .nav-login-card {
+      display: flex;
+      align-items: center;
+      gap: clamp(25px, 3vw, 45px);
+  }
+  
+  /* Styles for the desktop login button (inside the Link) */
+  .nav-login-desktop button {
+      padding: 10px 25px;
+      min-height: 48px;
+      outline: none;
+      border: 1px solid var(--border-color);
+      border-radius: 75px;
+      color: var(--text-light);
+      font-size: clamp(16px, 2vw, 18px);
+      background: var(--background-light);
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      box-sizing: border-box;
+  }
+  
+  .nav-login-desktop button:hover {
+      background: var(--background-hover);
+      box-shadow: 0 1px 3px var(--shadow-color-medium);
+  }
+  
+  .nav-login-desktop button:active {
+      background: var(--background-active);
+      box-shadow: inset 0 1px 2px var(--shadow-color-medium);
+  }
+  
+  .nav-login-desktop button:focus-visible {
+       border-color: var(--primary-color);
+       box-shadow: 0 0 0 2px var(--focus-shadow-color);
+  }
+  
+  
+  .nav-login-card .cart-icon-link {
+      position: relative;
+      display: inline-block;
+      line-height: 0; /* Helps align image */
+  }
+  
+  .nav-login-card .cart-icon-link img { /* Target cart icon specifically */
+      height: 28px;
+      width: auto;
+      cursor: pointer;
+      vertical-align: middle;
+  }
+  
+  .nav-cart-count {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      border-radius: 50%;
+      font-size: 12px;
+      background: var(--cart-count-bg);
+      color: var(--cart-count-text);
+      font-weight: bold;
+      border: 1px solid var(--background-light);
+      box-sizing: border-box;
+  }
+  
+  /* === Responsive Styles === */
+  
+  /* Burger Icon Button - Hidden by default */
+  .nav-dropdown-toggle {
+      display: none;
+      background: none;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      line-height: 0;
+  }
+  .nav-dropdown-toggle img {
+      height: 25px;
+      width: auto;
+      display: block;
+  }
+  .nav-dropdown-toggle:focus-visible {
+       outline: 2px solid var(--primary-color);
+       outline-offset: 2px;
+       border-radius: 3px;
+  }
+  
+  /* Hide mobile-only login list item by default */
+  ul.nav-menu li.nav-menu-login-mobile {
+    display: none;
 }
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.nav-logo img {
-    height: 40px;
-    width: auto;
-}
-
-.nav-logo p {
-    color: #171717;
-    font-size: clamp(24px, 4vw, 32px);
-    font-weight: 600;
-    margin: 0; 
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    gap: clamp(20px, 4vw, 50px);
-    font-size: clamp(16px, 2vw, 18px); 
-    font-weight: 500;
-    color: #626262;
-    margin: 0; 
-    padding: 0; 
-}
-
-.nav-menu li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    cursor: pointer;
-    position: relative;
-    padding-bottom: 5px; 
-}
-
-.nav-menu li a {
-    text-decoration: none;
-    color: inherit; 
-    padding: 5px; 
-    border-radius: 4px; 
-    transition: background-color 0.2s ease; 
-}
-
-.nav-menu li a:focus-visible {
-    outline: 2px solid #ff4141;
-    outline-offset: 2px;
-}
-
-.nav-menu li a:hover {
-   color: #171717;
-}
-
-
-.nav-menu hr {
-    border: none;
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: #ff4141;
-    position: absolute; 
-    bottom: 0; 
-    left: 10%; 
-}
-
-.nav-login-card {
-    display: flex;
-    align-items: center;
-    gap: clamp(25px, 3vw, 45px);
-    position: relative; 
-}
-
-.nav-login-card button {
-    padding: 10px 25px;
-    height: 48px; 
-    outline: none;
-    border: 1px solid #7a7a7a;
-    border-radius: 75px; 
-    color: #515151;
-    font-size: clamp(16px, 2vw, 18px); 
-    background: white;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease; 
-}
-
-.nav-login-card button:hover {
-    background: #f9f9f9;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.nav-login-card button:active {
-    background: #f3f3f3;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.nav-login-card button:focus-visible {
-     border-color: #ff4141;
-     box-shadow: 0 0 0 2px rgba(255, 65, 65, 0.3);
-}
-
-
-.nav-login-card .cart-icon-link {
-    position: relative; 
-    display: inline-block; 
-}
-
-.nav-login-card img {
-    height: 28px; 
-    width: auto;
-    cursor: pointer;
-    vertical-align: middle; 
-}
-
-.nav-cart-count {
-    width: 20px; 
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    position: absolute;
-    top: -8px;   
-    right: -10px; 
-    
-    border-radius: 50%; 
-    font-size: 12px; 
-    background: red;
-    color: white;
-    font-weight: bold;
-    border: 1px solid white; 
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        padding: 12px 4%; 
-    }
-
-    /* .nav-logo p {
-        /* Hide text on small screens if needed, or just let clamp handle it */
-        /* display: none; */
-    } */
-
-    .nav-menu {
-        gap: 20px; /* Reduce gap */
-    }
-
-    .nav-menu li a {
-        font-size: 15px; /* Adjust font size */
-    }
-
-    .nav-login-card {
-        gap: 20px; /* Reduce gap */
-    }
-
-    .nav-login-card button {
-        padding: 8px 18px; /* Reduce button padding */
-        height: 40px; /* Reduce button height */
-        font-size: 15px;
-    }
-
-    .nav-login-card img {
-        height: 25px; /* Slightly smaller icon */
-    }
-
-    .nav-cart-count {
-        width: 18px;
-        height: 18px;
-        font-size: 11px;
-        top: -6px;
-        right: -8px;
-    }
-
-
-@media (max-width: 480px) {
-
-    .nav-logo p {
-        font-size: 20px; 
-    }
-
-     .nav-login-card button {
-        padding: 6px 12px;
-        height: 36px;
-        font-size: 14px;
-     }
-}
+  
+  
+  /* --- Tablet & Smaller (Breakpoint: 850px) --- */
+  @media (max-width: 850px) {
+      .navbar {
+          padding: var(--navbar-padding-tablet);
+      }
+  
+      /* Show Burger Icon Button */
+      .nav-dropdown-toggle {
+          display: block;
+          order: 3; /* Visual order: Logo -> Login/Cart -> Burger */
+          margin-left: 15px;
+      }
+  
+      /* Style Mobile Menu Container */
+      .nav-menu {
+          /* Keep display: flex for layout when active */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px; /* Vertical gap */
+          padding: 20px 0;
+  
+          /* Positioning & Appearance */
+          position: absolute;
+          top: 100%; /* Position below navbar */
+          left: 0;
+          width: 100%;
+          background-color: var(--background-light);
+          box-shadow: 0 4px 6px var(--shadow-color-medium);
+          border-top: 1px solid var(--border-light);
+          z-index: 99; /* Below navbar itself */
+  
+          /* Transition */
+          opacity: 0;
+          transform: translateY(-10px); /* Start slightly up */
+          visibility: hidden; /* Use visibility for transition */
+          pointer-events: none; /* Prevent interaction when hidden */
+          transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      }
+  
+      /* Show menu when active */
+      .nav-menu.nav-menu-active {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+          pointer-events: auto;
+      }
+  
+      /* Style individual mobile menu items */
+      .nav-menu li {
+          width: 100%;
+          text-align: center;
+          padding-bottom: 0;
+          gap: 5px;
+      }
+  
+      .nav-menu li a { /* Style for nav links */
+          padding: 10px 20px; /* More padding */
+          font-size: 16px;
+          width: 100%;
+          display: block;
+          box-sizing: border-box; /* Include padding in width */
+      }
+       .nav-menu li a:hover { /* Add hover for mobile menu items */
+          background-color: var(--background-hover);
+       }
+  
+      .nav-menu hr {
+          width: 50%;
+          left: 25%;
+          bottom: -2px;
+          height: 2px;
+      }
+  
+      /* Hide desktop login button */
+      .nav-login-desktop {
+          display: none;
+      }
+  
+      /* Show mobile login list item ONLY when menu is active */
+      .nav-menu.nav-menu-active .nav-menu-login-mobile {
+          display: block; /* Show the list item */
+          width: 100%;
+          padding: 10px 20px;
+          box-sizing: border-box;
+          margin-top: 10px; /* Add some space above */
+          border-top: 1px solid var(--border-light); /* Optional separator */
+      }
+  
+       /* Style the link inside the mobile login list item */
+      .nav-menu-login-mobile a {
+          display: block;
+          width: 100%;
+          padding: 12px 20px;
+          font-size: 16px;
+          text-align: center;
+          border-radius: 30px;
+          border: 1px solid var(--border-color);
+          color: var(--text-light);
+          background: var(--background-light);
+          cursor: pointer;
+          font-weight: 500;
+          text-decoration: none; /* Ensure no underline */
+          transition: background-color 0.2s ease;
+      }
+       .nav-menu-login-mobile a:hover {
+           background: var(--background-hover);
+       }
+  
+  
+      /* Adjustments for login/cart area */
+      .nav-login-card {
+          gap: 20px;
+          order: 2; /* Visual order: Logo -> Login/Cart -> Burger */
+      }
+  
+      .nav-login-card .cart-icon-link img { /* Cart Icon */
+          height: 25px;
+      }
+  
+      .nav-cart-count {
+          width: 18px;
+          height: 18px;
+          font-size: 11px;
+          top: -6px;
+          right: -8px;
+      }
+  }
+  
+  
+  /* --- Smaller Mobile Adjustments --- */
+  @media (max-width: 480px) {
+      .navbar {
+          padding: var(--navbar-padding-mobile);
+      }
+      .nav-logo img {
+          height: 35px;
+      }
+      .nav-logo p {
+          font-size: 20px;
+      }
+      .nav-login-card {
+          gap: 15px;
+      }
+       .nav-login-card .cart-icon-link img { /* Cart Icon */
+          height: 24px;
+      }
+       .nav-cart-count {
+          width: 16px;
+          height: 16px;
+          font-size: 10px;
+          top: -5px;
+          right: -6px;
+      }
+  }
+  
