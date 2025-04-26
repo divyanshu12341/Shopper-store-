@@ -1,175 +1,3 @@
-// // import React, { useContext, useState } from "react";
-// // import "./Navbar.css";
-// // import logo from "../assets/logo.png";
-// // import cart_icon from "../assets/cart_icon.png";
-// // import { Link } from "react-router-dom";
-// // import { ShopContext } from '../../Context/ShopContext';
-
-// // const Navbar = () => {
-// //   const [menu, setMenu] = useState("shop");
-// //   const {getTotalCartItems} = useContext(ShopContext);
-// //   return (
-// //     <div className="navbar">
-// //       <div className="nav-logo">
-// //         <img src={logo} alt="website banner" />
-// //         <p>SHOPPER</p>
-// //       </div>
-// //       <ul className="nav-menu">
-// //         <li
-// //           onClick={() => {
-// //             setMenu("shop");
-// //           }}
-// //         >
-// //           {" "}
-// //           <Link to="/"> Shop </Link>
-// //           {menu === "shop" ? <hr /> : <></>}
-// //         </li>
-// //         <li
-// //           onClick={() => {
-// //             setMenu("mens");
-// //           }}
-// //         >
-// //           {" "}
-// //           <Link to="/mens"> Men </Link> {menu === "mens" ? <hr /> : <></>}
-// //         </li>
-// //         <li
-// //           onClick={() => {
-// //             setMenu("womens");
-// //           }}
-// //         >
-// //           {" "}
-// //           <Link to="/womens">Women</Link>
-// //           {menu === "womens" ? <hr /> : <></>}
-// //         </li>
-// //         <li
-// //           onClick={() => {
-// //             setMenu("kids");
-// //           }}
-// //         >
-// //           <Link to="/kids">Kids</Link>
-// //           {menu === "kids" ? <hr /> : <></>}
-// //         </li>
-// //       </ul>
-// //       <div className="nav-login-card">
-// //         <Link to="/login">
-// //           <button>Login</button>
-// //         </Link>
-// //         <Link to="/cart">
-// //           <img src={cart_icon} alt="Cart Icon" />
-// //         </Link>
-// //         <div className="nav-cart-count">{getTotalCartItems()}</div>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Navbar;
-
-
-// import React, { useContext, useState, useRef, useEffect } from "react";
-// import "./Navbar.css";
-// import logo from "../assets/logo.png";
-// import cart_icon from "../assets/cart_icon.png";
-// import nav_dropdown from "../assets/burger_menu.png"; // Assuming you have a dropdown/burger icon
-// import { Link } from "react-router-dom";
-// import { ShopContext } from '../../Context/ShopContext';
-
-// const Navbar = () => {
-//   const [menu, setMenu] = useState("shop");
-//   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu toggle
-//   const { getTotalCartItems } = useContext(ShopContext);
-//   const menuRef = useRef(); // Ref for the menu UL
-
-//   // Function to handle menu item clicks (closes mobile menu)
-//   const handleMenuItemClick = (menuItem) => {
-//     setMenu(menuItem);
-//     setIsMenuOpen(false); // Close menu on item click
-//   };
-
-//   // Toggle function for the burger icon
-//   const dropdown_toggle = () => {
-//     setIsMenuOpen(!isMenuOpen);
-//   };
-
-//   // Optional: Close menu if clicked outside (basic implementation)
-//   useEffect(() => {
-//     const handleClickOutside = (event) => {
-//       if (menuRef.current && !menuRef.current.contains(event.target)) {
-//         // Check if the click target is NOT the toggle button itself
-//         if (!event.target.closest('.nav-dropdown-icon')) {
-//            setIsMenuOpen(false);
-//         }
-//       }
-//     };
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, [menuRef]);
-
-
-//   return (
-//     <div className="navbar">
-//       <Link to="/" className="nav-logo-link" style={{ textDecoration: 'none' }}> {/* Wrap logo in Link */}
-//         <div className="nav-logo">
-//           <img src={logo} alt="Shopper Logo" />
-//           <p>SHOPPER</p>
-//         </div>
-//       </Link>
-
-//       {/* Burger Icon - visible only on mobile */}
-//       <img
-//         className='nav-dropdown-icon'
-//         onClick={dropdown_toggle}
-//         src={nav_dropdown} // Use your burger/dropdown icon here
-//         alt="Menu Toggle"
-//       />
-
-//       {/* Navigation Menu */}
-//       {/* Add 'nav-menu-active' class when isMenuOpen is true */}
-//       <ul ref={menuRef} className={`nav-menu ${isMenuOpen ? 'nav-menu-active' : ''}`}>
-//         <li onClick={() => handleMenuItemClick("shop")}>
-//           <Link to="/">Shop</Link>
-//           {menu === "shop" ? <hr /> : null}
-//         </li>
-//         <li onClick={() => handleMenuItemClick("mens")}>
-//           <Link to="/mens">Men</Link>
-//           {menu === "mens" ? <hr /> : null}
-//         </li>
-//         <li onClick={() => handleMenuItemClick("womens")}>
-//           <Link to="/womens">Women</Link>
-//           {menu === "womens" ? <hr /> : null}
-//         </li>
-//         <li onClick={() => handleMenuItemClick("kids")}>
-//           <Link to="/kids">Kids</Link>
-//           {menu === "kids" ? <hr /> : null}
-//         </li>
-//          {/* Optionally move Login button inside mobile menu */}
-//          <li className="nav-menu-login-mobile">
-//             <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-//               <button>Login</button>
-//             </Link>
-//          </li>
-//       </ul>
-
-//       {/* Login and Cart */}
-//       <div className="nav-login-card">
-//         {/* Hide standard login button on smaller screens if moved to menu */}
-//         <Link to="/login" className="nav-login-desktop">
-//           <button>Login</button>
-//         </Link>
-//         <Link to="/cart" className="cart-icon-link" onClick={() => setIsMenuOpen(false)}> {/* Close menu if cart clicked */}
-//           <img src={cart_icon} alt="Cart Icon" />
-//         </Link>
-//         <div className="nav-cart-count">{getTotalCartItems()}</div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
-
-
 import React, { useContext, useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import logo from "../assets/logo.png";
@@ -300,15 +128,19 @@ const Navbar = () => {
           <button type="button">Login</button>
         </Link>
 
-        {/* Cart Icon Link */}
+        {/* Cart Icon Link - Now contains both the image AND the count */}
         <Link to="/cart" className="cart-icon-link" onClick={() => setIsMenuOpen(false)}>
-          <img src={cart_icon} alt="Cart" /> {/* Clearer alt text */}
-        </Link>
+          <img src={cart_icon} alt="Cart" /> {/* Cart image */}
 
-        {/* Cart Item Count Display */}
-        {/* aria-live="polite" helps screen readers announce changes in the count */}
-        <div className="nav-cart-count" aria-live="polite">{getTotalCartItems()}</div>
-      </div>
+          {/* Cart Item Count Display - MOVED INSIDE the Link */}
+          {/* Now its position: absolute will be relative to cart-icon-link */}
+          {/* aria-live="polite" helps screen readers announce changes in the count */}
+          <div className="nav-cart-count" aria-live="polite">
+            {getTotalCartItems()}
+          </div>
+        </Link> {/* The Link now correctly wraps both elements */}
+
+      </div> {/* Closing tag for nav-login-card */}
     </nav> // Closing tag for the <nav> element
   );
 };
